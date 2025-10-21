@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Simple Input Form</title>
+</head>
+<body>
+    <h1>Submit Text</h1>
+    <form id="textForm">
+        <input type="text" id="userInput" name="userInput" placeholder="Enter some text" required>
+        <button type="submit">Submit</button>
+    </form>
+
+    <script>
+        // Placeholder for later database submission logic
+        document.getElementById('textForm').addEventListener('submit', function (e) {
+            e.preventDefault(); // prevent default page reload
+
+            const text = document.getElementById('userInput').value;
+            console.log("Text to send to DB:", text);
+
+            fetch("http://localhost:3000/post", { method: "POST", body: text })
+        });
+    </script>
+</body>
+</html>
