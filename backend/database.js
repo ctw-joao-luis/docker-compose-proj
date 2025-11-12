@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 
-const mongodbPort = 'mongodb://127.0.0.1:27017/'
+const mongodbPort = 'mongodb://webserver-db:27017/myWebserverDB';
 
 main().catch(err => console.log(err));
 

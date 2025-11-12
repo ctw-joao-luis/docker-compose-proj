@@ -5,22 +5,30 @@
     <title>Simple Input Form</title>
 </head>
 <body>
-    <h1>Submit Text</h1>
-    <form id="textForm">
-        <input type="text" id="userInput" name="userInput" placeholder="Enter some text" required>
-        <button type="submit">Submit</button>
-    </form>
+    <h1>Submit Name</h1>
+        <form id="textForm">
+            <input type="text" id="userInput" placeholder="Enter name">
+            <button type="submit">Send</button>
+        </form>
 
-    <script>
-        // Placeholder for later database submission logic
-        document.getElementById('textForm').addEventListener('submit', function (e) {
-            e.preventDefault(); // prevent default page reload
+        <script>
+            document.getElementById('textForm').addEventListener('submit', async function (e) {
+            e.preventDefault();
 
             const text = document.getElementById('userInput').value;
-            console.log("Text to send to DB:", text);
+            const jsonData = JSON.stringify({ name: text });
 
-            fetch("http://localhost:3000/post", { method: "POST", body: text })
-        });
-    </script>
+            console.log("Text to send to DB:", jsonData);
+
+            const res = await fetch("http://localhost:3000/user", {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: jsonData
+            });
+
+            const data = await res.json().catch(() => ({}));
+            console.log("Response:", data);
+            });
+        </script>
 </body>
 </html>

@@ -1,6 +1,11 @@
 FROM node:slim
-WORKDIR /app/
-COPY ./package.json ./package-lock.json server.js ./database.js /app/
+WORKDIR /app
+
+COPY package*.json ./
+
+RUN npm install
+
+COPY . .
 RUN npm install
 EXPOSE 3000
 CMD [ "node", "server.js" ]

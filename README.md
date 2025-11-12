@@ -6,7 +6,7 @@ To build (needs to be on Dockerfile path):
 
 To instantiate the first time: 
 
-`docker run --name webserver-backend -p 3000:3000 backend-proj:latest`
+`docker run --name webserver-backend --network db-webserver-network -p 3000:3000 backend-proj:latest`
 
 To start and stop said image:
 
@@ -34,7 +34,7 @@ To build (needs to be on Dockerfile path):
 
 To instantiate the first time: 
 
-`docker run --name webserver-db -d webserver-db:latest`
+`docker run --name webserver-db --network db-webserver-network -d webserver-db:latest`
 
 To start and stop said image:
 
